@@ -15,6 +15,9 @@ tagged or published, so 0.7.0 also brings their changes to `pip` / `uvx` users. 
 particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://github.com/prakhar1605/Opencollab-mcp/issues/79)).
 
 ### Added
+- `max_age_days` option (1–365, default 90) for `opencollab_find_issues` ([#149](https://github.com/prakhar1605/Opencollab-mcp/pull/149))
+- `opencollab_generate_pr_plan` reports `issue.body_truncated` and `issue.body_length` ([#147](https://github.com/prakhar1605/Opencollab-mcp/pull/147))
+- `--help` lists the supported environment variables ([#151](https://github.com/prakhar1605/Opencollab-mcp/pull/151))
 - `SECURITY.md` with a vulnerability reporting policy ([#145](https://github.com/prakhar1605/Opencollab-mcp/pull/145))
 - A warning is logged when the GitHub API rate limit is low ([#144](https://github.com/prakhar1605/Opencollab-mcp/pull/144))
 - `limit` parameter (1–30) for `opencollab_match_me` ([#121](https://github.com/prakhar1605/Opencollab-mcp/pull/121))
