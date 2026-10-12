@@ -461,3 +461,30 @@ async def test_generate_pr_plan_reports_body_truncation(mock_github, body):
     assert issue["body_length"] == len(original)
     assert issue["body_truncated"] is (len(original) > 1500)
     assert issue["body"] == original[:1500] + ("…" if len(original) > 1500 else "")
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("include_bots", [False, True])
+async def test_generate_pr_plan_skips_bot_comments(mock_github, include_bots):
+    humans = [
+        {"user": {"login": "contributor", "type": "User"}, "body": "Reproduction steps"},
+        {"user": {"login": "robotics-fan"}, "body": "Expected behavior"},
+    ]
+    bots = [
+        {"user": {"login": "triage", "type": "Bot"}, "body": "Stale reminder"},
+        {"user": {"login": "cla[bot]", "type": "User"}, "body": "Sign the CLA"},
+    ] if include_bots else []
+    mock_github({
+        "/repos/o/r/issues/7": {"comments": len(humans) + len(bots)},
+        "/repos/o/r/issues/7/comments": humans[:1] + bots + humans[1:],
+        "/repos/o/r": {},
+        "/repos/o/r/contents": [],
+    })
+    result = await _call_tool_compat(
+        build_server(), "opencollab_generate_pr_plan",
+        {"params": {"owner": "o", "repo": "r", "issue_number": "7"}},
+    )
+    plan = json.loads(_extract_text(result))
+    assert [comment["body"] for comment in plan["comments"]] == [c["body"] for c in humans]
+    assert plan["bot_comments_skipped"] == len(bots)
+    assert plan["issue"]["comments_count"] == len(humans) + len(bots)
