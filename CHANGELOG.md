@@ -15,6 +15,7 @@ tagged or published, so 0.7.0 also brings their changes to `pip` / `uvx` users. 
 particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://github.com/prakhar1605/Opencollab-mcp/issues/79)).
 
 ### Added
+- `opencollab_generate_pr_plan` skips bot comments and reports `bot_comments_skipped` ([#148](https://github.com/prakhar1605/Opencollab-mcp/pull/148))
 - `max_age_days` option (1–365, default 90) for `opencollab_find_issues` ([#149](https://github.com/prakhar1605/Opencollab-mcp/pull/149))
 - `opencollab_generate_pr_plan` reports `issue.body_truncated` and `issue.body_length` ([#147](https://github.com/prakhar1605/Opencollab-mcp/pull/147))
 - `--help` lists the supported environment variables ([#151](https://github.com/prakhar1605/Opencollab-mcp/pull/151))
@@ -31,6 +32,7 @@ particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://gi
 
 ### Changed
 - `repo_health` scoring thresholds moved to named constants in `constants.py`, behaviour unchanged ([#146](https://github.com/prakhar1605/Opencollab-mcp/pull/146))
+- CI also tests Python 3.13 ([#41](https://github.com/prakhar1605/Opencollab-mcp/pull/41))
 - PyPI project page links to the changelog and documentation ([#143](https://github.com/prakhar1605/Opencollab-mcp/pull/143))
 - `opencollab_match_me` picks the top language by number of repositories, not repository disk size ([#125](https://github.com/prakhar1605/Opencollab-mcp/pull/125))
 - Unknown command-line arguments are reported with a warning instead of being silently ignored ([#126](https://github.com/prakhar1605/Opencollab-mcp/pull/126))
@@ -42,6 +44,11 @@ particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://gi
 - Contributing guidelines are also looked up in `.github/` and `docs/` ([#38](https://github.com/prakhar1605/Opencollab-mcp/pull/38))
 
 ### Fixed
+- Unsupported transport settings are rejected with a clear error ([#152](https://github.com/prakhar1605/Opencollab-mcp/pull/152))
+- GitHub transport failures give actionable guidance ([#153](https://github.com/prakhar1605/Opencollab-mcp/pull/153))
+- Expected GitHub client errors are logged without tracebacks ([#154](https://github.com/prakhar1605/Opencollab-mcp/pull/154))
+- The `language` input is bounded before the GitHub search ([#155](https://github.com/prakhar1605/Opencollab-mcp/pull/155))
+- Discovery searches exclude issues that are already assigned ([#156](https://github.com/prakhar1605/Opencollab-mcp/pull/156))
 - `check_issue_availability` reports `wontfix`/`duplicate`/`invalid` issues as unavailable and warns on `blocked`/`needs-triage` labels ([#142](https://github.com/prakhar1605/Opencollab-mcp/pull/142))
 - Whitespace around `GITHUB_TOKEN` (e.g. a trailing newline) no longer breaks every request ([#123](https://github.com/prakhar1605/Opencollab-mcp/pull/123))
 - GitHub 422 validation errors are shown as a readable message instead of raw JSON ([#128](https://github.com/prakhar1605/Opencollab-mcp/pull/128))
