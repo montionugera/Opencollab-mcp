@@ -36,6 +36,7 @@ particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://gi
 ### Changed
 - `repo_health` scoring thresholds moved to named constants in `constants.py`, behaviour unchanged ([#146](https://github.com/prakhar1605/Opencollab-mcp/pull/146))
 - CI also tests Python 3.13 ([#41](https://github.com/prakhar1605/Opencollab-mcp/pull/41))
+- `opencollab_impact_estimator` returns MCP structured output (`structuredContent` and an `outputSchema`) alongside the unchanged JSON text; GitHub errors are returned as tool errors ([#163](https://github.com/prakhar1605/Opencollab-mcp/pull/163))
 - PyPI project page links to the changelog and documentation ([#143](https://github.com/prakhar1605/Opencollab-mcp/pull/143))
 - `opencollab_match_me` picks the top language by number of repositories, not repository disk size ([#125](https://github.com/prakhar1605/Opencollab-mcp/pull/125))
 - Unknown command-line arguments are reported with a warning instead of being silently ignored ([#126](https://github.com/prakhar1605/Opencollab-mcp/pull/126))
