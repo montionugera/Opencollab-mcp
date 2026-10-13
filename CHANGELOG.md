@@ -15,6 +15,9 @@ tagged or published, so 0.7.0 also brings their changes to `pip` / `uvx` users. 
 particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://github.com/prakhar1605/Opencollab-mcp/issues/79)).
 
 ### Added
+- `opencollab_generate_pr_plan` includes the repository's PR template ([#150](https://github.com/prakhar1605/Opencollab-mcp/pull/150))
+- `check_issue_availability` warns about assigned issues with no activity for 60 days ([#157](https://github.com/prakhar1605/Opencollab-mcp/pull/157))
+- `GH_TOKEN` is accepted as a fallback for `GITHUB_TOKEN` ([#159](https://github.com/prakhar1605/Opencollab-mcp/pull/159))
 - `opencollab_generate_pr_plan` skips bot comments and reports `bot_comments_skipped` ([#148](https://github.com/prakhar1605/Opencollab-mcp/pull/148))
 - `max_age_days` option (1–365, default 90) for `opencollab_find_issues` ([#149](https://github.com/prakhar1605/Opencollab-mcp/pull/149))
 - `opencollab_generate_pr_plan` reports `issue.body_truncated` and `issue.body_length` ([#147](https://github.com/prakhar1605/Opencollab-mcp/pull/147))
@@ -44,6 +47,10 @@ particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://gi
 - Contributing guidelines are also looked up in `.github/` and `docs/` ([#38](https://github.com/prakhar1605/Opencollab-mcp/pull/38))
 
 ### Fixed
+- Transient GitHub server failures are retried once ([#158](https://github.com/prakhar1605/Opencollab-mcp/pull/158))
+- `check_issue_availability` explains why a closed issue is unavailable ([#160](https://github.com/prakhar1605/Opencollab-mcp/pull/160))
+- Archived repositories are excluded from issue discovery ([#161](https://github.com/prakhar1605/Opencollab-mcp/pull/161))
+- Bot pull requests are excluded from contributor merge statistics ([#162](https://github.com/prakhar1605/Opencollab-mcp/pull/162))
 - Unsupported transport settings are rejected with a clear error ([#152](https://github.com/prakhar1605/Opencollab-mcp/pull/152))
 - GitHub transport failures give actionable guidance ([#153](https://github.com/prakhar1605/Opencollab-mcp/pull/153))
 - Expected GitHub client errors are logged without tracebacks ([#154](https://github.com/prakhar1605/Opencollab-mcp/pull/154))
