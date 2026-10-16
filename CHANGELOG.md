@@ -15,6 +15,8 @@ tagged or published, so 0.7.0 also brings their changes to `pip` / `uvx` users. 
 particular it fixes the startup crash of 0.5.0 under `mcp` 2.x ([#79](https://github.com/prakhar1605/Opencollab-mcp/issues/79)).
 
 ### Added
+- `language` accepts up to three comma-separated languages for `opencollab_find_issues`; the response adds a `languages` list ([#165](https://github.com/prakhar1605/Opencollab-mcp/pull/165))
+- A workflow publishes the Docker image to GitHub Container Registry on `v*` tags ([#164](https://github.com/prakhar1605/Opencollab-mcp/pull/164))
 - `opencollab_generate_pr_plan` includes the repository's PR template ([#150](https://github.com/prakhar1605/Opencollab-mcp/pull/150))
 - `check_issue_availability` warns about assigned issues with no activity for 60 days ([#157](https://github.com/prakhar1605/Opencollab-mcp/pull/157))
 - `GH_TOKEN` is accepted as a fallback for `GITHUB_TOKEN` ([#159](https://github.com/prakhar1605/Opencollab-mcp/pull/159))
